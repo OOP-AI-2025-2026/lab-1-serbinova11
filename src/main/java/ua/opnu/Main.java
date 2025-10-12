@@ -15,8 +15,7 @@ public class Main {
      * icyHot(2, 120) → false
      */
     public boolean icyHot(int temp1, int temp2) {
-        // TODO: write method body
-        return false;
+        return (temp1 < 0 && temp2 > 100) || (temp1 > 100 && temp2 < 0);
     }
 
     /**
@@ -27,8 +26,9 @@ public class Main {
      * in1020(8, 99) → false
      */
     public boolean in1020(int a, int b) {
-        // TODO: write method body
-        return false;
+        boolean aIn = a >= 10 && a <= 20;
+        boolean bIn = b >= 10 && b <= 20;
+        return aIn || bIn;
     }
 
     /**
@@ -40,8 +40,7 @@ public class Main {
      * hasTeen(20, 10, 13) → true
      */
     public boolean hasTeen(int a, int b, int c) {
-        // TODO: write method body
-        return false;
+        return (a >= 13 && a <= 19) || (b >= 13 && b <= 19) || (c >= 13 && c <= 19);
     }
 
     // ======== Boolean expressions ========
@@ -55,8 +54,7 @@ public class Main {
      * sleepIn(false, true) → true
      */
     public boolean sleepIn(boolean weekday, boolean vacation) {
-        // TODO: write method body
-        return false;
+        return !weekday || vacation;
     }
 
     /**
@@ -68,8 +66,7 @@ public class Main {
      * monkeyTrouble(true, false) → false
      */
     public boolean monkeyTrouble(boolean aSmile, boolean bSmile) {
-        // TODO: write method body
-        return false;
+        return aSmile == bSmile;
     }
 
     /**
@@ -81,8 +78,11 @@ public class Main {
      * posNeg(-4, -5, true) → true
      */
     public boolean posNeg(int a, int b, boolean negative) {
-        // TODO: write method body
-        return false;
+        if (negative) {
+            return a < 0 && b < 0;
+        } else {
+            return (a < 0 && b > 0) || (a > 0 && b < 0);
+        }
     }
 
     // ======== Loops and Arrays ========
@@ -95,8 +95,13 @@ public class Main {
      * arrayCount9([1, 9, 9, 3, 9]) → 3
      */
     public int arrayCount9(int[] nums) {
-        // TODO: write method body
-        return 0;
+        int count = 0;
+        for (int num : nums) {
+            if (num == 9) {
+                count++;
+            }
+        }
+        return count;
     }
 
     /**
@@ -108,7 +113,12 @@ public class Main {
      * arrayFront9([1, 2, 3, 4, 5]) → false
      */
     public boolean arrayFront9(int[] nums) {
-        // TODO: write method body
+        int end = Math.min(4, nums.length);
+        for (int i = 0; i < end; i++) {
+            if (nums[i] == 9) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -120,7 +130,11 @@ public class Main {
      * array123([1, 1, 2, 1, 2, 3]) → true
      */
     public boolean array123(int[] nums) {
-        // TODO: write method body
+        for (int i = 0; i < nums.length - 2; i++) {
+            if (nums[i] == 1 && nums[i+1] == 2 && nums[i+2] == 3) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -134,8 +148,8 @@ public class Main {
      * helloName("X") → "Hello X!"
      */
     public String helloName(String name) {
-        // TODO: write method body
-        return null;
+        return "Hello " + name + "!";
+
     }
 
     /**
@@ -147,8 +161,14 @@ public class Main {
      * lastTwo("ab") → "ba"
      */
     public String lastTwo(String str) {
-        // TODO: write method body
-        return null;
+        if (str.length() < 2) {
+            return str;
+        }
+        int len = str.length();
+        String prefix = str.substring(0, len - 2);
+        char lastChar = str.charAt(len - 1);
+        char secondLastChar = str.charAt(len - 2);
+        return prefix + lastChar + secondLastChar;
     }
 
     /**
@@ -159,9 +179,7 @@ public class Main {
      * middleTwo("Practice") → "ct"
      */
     public String middleTwo(String str) {
-        // TODO: write method body
-        return null;
+        int midIndex = str.length() / 2;
+        return str.substring(midIndex - 1, midIndex + 1);
     }
-
-
 }
